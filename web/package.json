@@ -1,0 +1,63 @@
+{
+  "name": "fenix-black-web-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
+    "@chatscope/chat-ui-kit-styles": "^1.4.0",
+    "@fingerprintjs/fingerprintjs": "^4.4.1",
+    "@nice-avatar-svg/react": "^0.0.5",
+    "@nice-avatar-svg/render": "^0.0.2",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.98",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@uidotdev/usehooks": "^2.4.1",
+    "crypto-js": "^4.2.0",
+    "dirty-json": "^0.9.2",
+    "framer-motion": "^11.2.12",
+    "lodash": "^4.17.21",
+    "lottie-colorify": "^0.8.0",
+    "lottie-web": "^5.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-nice-avatar": "^1.5.0",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "5.0.1",
+    "react-text-to-speech": "^0.15.3",
+    "react-timeago": "^7.2.0",
+    "react-wired-elements": "^0.1.6",
+    "text-to-speech-js": "^1.1.10",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
