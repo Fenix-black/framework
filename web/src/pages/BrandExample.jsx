@@ -26,7 +26,6 @@ function BrandExample() {
           style={{marginTop:20, color:'yellowgreen' }}
           disabled={inMeeting}
           onClick={async()=>{
-            //await privacyPolicy.current.start('Create a review for propertyradar.com',privacyPolicy);
             setInMeeting(true);
             let settings = {
               env: {
@@ -38,7 +37,6 @@ function BrandExample() {
             };
             settings = {};
             await meetingBrand.current.start(testTask,brandSchema,settings);
-            //meetingBrand.current.play();
           }}
         >Start Meeting</WiredButton>
 
