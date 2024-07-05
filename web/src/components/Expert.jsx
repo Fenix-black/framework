@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useEffect, useState, useImperativeHandle } from 'react';
-import Puppet from '.Puppet';
+import Puppet from './Puppet';
 
 const Expert = forwardRef(({
     id = "agent",
