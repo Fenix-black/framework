@@ -328,7 +328,7 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                         if (refs.current[obj.expert_id] && refs.current[obj.expert_id].speak) {
                             const meta_expert = refs.current[obj.expert_id].meta();
                             if (meta_expert.study && meta_expert.study.length > 0) {
-                                await refs.current[obj.expert_id].speak(`Hello, my name is ${meta_expert.name}, I'm the ${meta_expert.role}, and I am studying the material you gave me.`);
+                                await refs.current[obj.expert_id].speak(`Hello, my name is ${meta_expert.name}, I'm the ${meta_expert.role}. Give me some seconds to prepare.`);
                             }
                         }
                     } else {
@@ -355,8 +355,8 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                     console.log('Received data:', obj);
                     if (refs.current['field-0']) {
                         // split the description into an array
-                        const meta1 = refs.current['field-0'].meta(); 
-                        addTranscript(meta1.name,obj.data.description_first_person,'says',meta1.role);
+                        //(doesn't seem necessary now 5jul24) const meta1 = refs.current['field-0'].meta(); 
+                        //(doesn't seem necessary now 5jul24) addTranscript(meta1.name,obj.data.description_first_person,'says',meta1.role);
                         const sentences = splitSentences(obj.data.description_first_person);
                         //console.log('sentences',sentences);
                         await refs.current['field-0'].speak(sentences);
@@ -387,7 +387,7 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                     }
                     // only play animation if 'play.valid' is true
                     if (play.valid === true && play.kind === 'tool') {
-                        console.log('DEBUG: TOOL DETECTED:',obj);
+                        //console.log('DEBUG: TOOL DETECTED:',obj);
                         if (refs.current[play.expert_id]) {
                             await refs.current[play.expert_id].play(play.tool_id);
                             await refs.current[play.expert_id].speak(play.sentences,400,150,300,async function() {
@@ -399,7 +399,7 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                             addTranscript(meta_expert.name,play.sentences,'says',meta_expert.role,play.tool_id);
                         }
                     } else if (play.valid === true && play.kind === 'thought') {
-                        console.log('DEBUG: NEW THOUGHT DETECTED:',obj);
+                        //console.log('DEBUG: NEW THOUGHT DETECTED:',obj);
                         if (refs.current[play.expert_id]) { 
                             await refs.current[play.expert_id].play(play.tool_id);
                             await refs.current[play.expert_id].speak(`(${play.sentences})`,400,150,1000,async function() {
@@ -411,14 +411,14 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                             addTranscript(meta_expert.name,play.sentences,'thought',meta_expert.role);
                         } 
                     } else if (play.kind === 'tool') {
-                        console.log('TOOL NOT USED', obj);
+                        //console.log('TOOL NOT USED', obj);
                     }
 
                 } else if (obj?.action === 'raw_output') {
                     // this is the unstructured end of the meeting
                     // stop all animations and speak the final message
                     // iterate refs
-                    let manager_expert_id = null;
+                    //let manager_expert_id = null;
                     for (const expert_id in refs.current) {
                         if (refs.current[expert_id].stop) {
                             await refs.current[expert_id].avatarSize('100%');
@@ -426,10 +426,10 @@ const Meeting = forwardRef(({ name, task, rules=[], outputKey, children, onInit,
                         }
                         // make the first avatar 'speak' the final result (TODO should be a manager)
                         // loop through the refs and find the first 'manager' (role)
-                        const meta_expert = refs.current[expert_id].meta();
+                        /*const meta_expert = refs.current[expert_id].meta();
                         if (meta_expert.role && meta_expert.role.toLowerCase().indexOf('manager')!=-1) {
                             manager_expert_id = expert_id;
-                        }
+                        }*/
                     }
 
                 } else if (obj?.action === 'finishedMeeting') {
