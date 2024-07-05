@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef, useEffect, useState, useImperativeHandle } from 'react';
-import Puppet from '../components/Puppet';
+import Puppet from '.Puppet';
 
-const Agent = forwardRef(({
+const Expert = forwardRef(({
     id = "agent",
     width = "300px",  // default width
     height = "300px",  // default height
@@ -68,7 +68,7 @@ const Agent = forwardRef(({
     }));
 
     useEffect(() => {
-        setup(); // Set up Puppet when Agent is mounted
+        setup(); // Set up Puppet when Expert is mounted
     }, []);
 
     return (
@@ -88,4 +88,4 @@ const Agent = forwardRef(({
     );
 });
 
-export default Agent;
+export default Expert;

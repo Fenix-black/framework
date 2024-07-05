@@ -1,13 +1,13 @@
 import React, { forwardRef, useRef, useEffect, useImperativeHandle } from 'react';
-import Agent from './Agent'; // TODO rename Agent to Expert later
+import Expert from '../components/Expert';
 import { tools, avatar } from './constants';
 
 const AccountManager = forwardRef(({
     id="account-manager",
-    name="Mauricio",  // used for the displayed personality of the agent and maybe memory
-    age=37,  // used for the displayed personality of the agent
-    gender="male", // used for the displayed personality of the agent
-    task="", // specific task for this agent instance
+    name="Mauricio",  // used for the displayed personality of the expert and maybe memory
+    age=37,  // used for the displayed personality of the expert
+    gender="male", // used for the displayed personality of the expert
+    task="", // specific task for this expert instance
     style,
     onAnimationEnd,
     study=[],
@@ -34,7 +34,7 @@ const AccountManager = forwardRef(({
             glassesStyle: avatar.glassesStyle.round, 
             facialHairStyle: avatar.facialHairStyle.none,
         },
-        tools: { // defines animations and which tools are available for this agent
+        tools: { // defines animations and which tools are available for this expert
             [tools.search]: { 'searching':'Searching websites for more information.' },
             [tools.scrape]: { 'reading': 'Reading the contents ..' },
             [tools.website_search]: { 'webpage': 'Reading the contents ..' },
@@ -46,14 +46,14 @@ const AccountManager = forwardRef(({
     }
 
     const setup = () => {
-        // Example: set up Agent based on AccountManager's props like age and gender
+        // Example: set up Expert based on AccountManager's props like age and gender
         if (expertRef.current) {
             //expertRef.current.setAge(age);
             //expertRef.current.setGender(gender);
         }
     };
 
-    // Expose Agent's methods to AccountManager's parent through ref
+    // Expose Expert's methods to AccountManager's parent through ref
     useImperativeHandle(ref, () => ({
         // Inherit Agent methods
         ...expertRef.current,
@@ -62,11 +62,11 @@ const AccountManager = forwardRef(({
     }));
 
     useEffect(() => {
-        setup(); // Set up Agent when specialist is mounted
+        setup(); // Set up Expert when specialist is mounted
     }, []);
 
     return (
-        <Agent
+        <Expert
             ref={expertRef}
             id={id}
             meta={meta}

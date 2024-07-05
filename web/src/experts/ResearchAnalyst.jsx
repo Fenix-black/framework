@@ -1,13 +1,13 @@
 import React, { forwardRef, useRef, useEffect, useImperativeHandle } from 'react';
-import Agent from './Agent'; // TODO rename Agent to Expert later
+import Expert from '../components/Expert';
 import { tools, avatar } from './constants';
 
 const ResearchAnalyst = forwardRef(({
     id="analyst",
-    name="Felipe",  // used for the displayed personality of the agent and maybe memory
-    age=37,  // used for the displayed personality of the agent
-    gender="male", // used for the displayed personality of the agent
-    task="", // specific task for this agent instance
+    name="Felipe",  // used for the displayed personality of the expert and maybe memory
+    age=37,  // used for the displayed personality of the expert
+    gender="male", // used for the displayed personality of the expert
+    task="", // specific task for this expert instance
     style,
     onAnimationEnd,
     study=[],
@@ -38,7 +38,7 @@ const ResearchAnalyst = forwardRef(({
             hairStyle: avatar.hairStyle.turban,
             earSize: avatar.earSize.medium
         },
-        tools: { // defines animations and which tools are available for this agent
+        tools: { // defines animations and which tools are available for this expert
             [tools.search]: { 'searching':'Searching websites for more information.' },
             [tools.query_visual_website]: { 'camera': 'Querying webpage visually ..' },
             [tools.scrape]: { 'reading': 'Reading the contents ..' },
@@ -53,34 +53,34 @@ const ResearchAnalyst = forwardRef(({
     }
 
     const setup = () => {
-        // Example: set up Agent based on AccountManager's props like age and gender
+        // Example: set up expert based on AccountManager's props like age and gender
         if (expertRef.current) {
             //expertRef.current.setAge(age);
             //expertRef.current.setGender(gender);
         }
     };
 
-    // Expose Agent's methods to AccountManager's parent through ref
+    // Expose expert's methods to AccountManager's parent through ref
     useImperativeHandle(ref, () => ({
-        // Inherit Agent methods
+        // Inherit expert methods
         ...expertRef.current,
         // Custom methods
         getIDx: ()=>id
     }));
 
     useEffect(() => {
-        setup(); // Set up Agent when specialist is mounted
+        setup(); // Set up expert when specialist is mounted
     }, []);
 
     return (
-        <Agent
+        <Expert
             ref={expertRef}
             id={id}
             meta={meta}
             name={name}
             style={style}
             onSpeakEnd={onAnimationEnd}
-            // other props that Agent expects
+            // other props that expert expects
         />
     );
 });

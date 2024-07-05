@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useEffect, useImperativeHandle } from 'react';
-import Agent from './Agent'; // TODO rename Agent to Expert later
+import Expert from '../components/Expert';
 import { tools, avatar } from './constants';
 
 const Designer = forwardRef(({
@@ -41,7 +41,7 @@ const Designer = forwardRef(({
             speakSpeed: 200,
             blinkSpeed: 3000,
         },
-        tools: { // defines animations and which tools are available for this agent
+        tools: { // defines animations and which tools are available for this expert
             //[tools.search]: { 'searching':'Searching websites for more information.' },
             //[tools.website_search]: { 'searching':'Searching website for more information.' },
             [tools.scrape]: { 'analyzing:#FFFFFF': 'Understanding the design ..' },
@@ -54,34 +54,34 @@ const Designer = forwardRef(({
     };
 
     const setup = () => {
-        // Example: set up Agent based on AccountManager's props like age and gender
+        // Example: set up Expert based on AccountManager's props like age and gender
         if (expertRef.current) {
             //expertRef.current.setAge(age);
             //expertRef.current.setGender(gender);
         }
     };
 
-    // Expose Agent's methods to AccountManager's parent through ref
+    // Expose Expert's methods to AccountManager's parent through ref
     useImperativeHandle(ref, () => ({
-        // Inherit Agent methods
+        // Inherit Expert methods
         ...expertRef.current,
         // Custom methods
         other: ()=>{}
     }));
 
     useEffect(() => {
-        setup(); // Set up Agent when specialist is mounted
+        setup(); // Set up Expert when specialist is mounted
     }, []);
 
     return (
-        <Agent
+        <Expert
             ref={expertRef}
             id={id}
             meta={meta}
             name={name}            
             style={style}
             onSpeakEnd={onAnimationEnd}
-            // other props that Agent expects
+            // other props that Expert expects
         />
     );
 });
