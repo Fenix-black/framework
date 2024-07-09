@@ -2,8 +2,8 @@ import React, { forwardRef, useRef, useEffect, useImperativeHandle } from 'react
 import Expert from '../components/Expert';
 import { tools, avatar } from './constants';
 
-const LinkedinExpert = forwardRef(({
-    id="linkedin_expert",
+const PeopleFinder = forwardRef(({
+    id="people_finder",
     name="Felipe",  // used for the displayed personality of the expert and maybe memory
     age=37,         // used for the displayed personality of the expert
     gender="male",  // used for the displayed personality of the expert
@@ -18,13 +18,14 @@ const LinkedinExpert = forwardRef(({
         type: 'expert',
         name,
         age,
-        role: 'Linkedin Expert',
-        goal: `To search for people or companies information on Linkedin`,
+        role: 'People Finder',
+        goal: `To search for people information on the web.`,
         backstory: `# You're an expert at understanding and extracting structured information from any webpage.
-        You have been trained to search for people or companies information primarily from Linkedin.
+        # You have been trained to search for people of companies, roles and countries primarily using search engines and web scraping tools.
         # You know that instead of using the Linkedin API, you can use the search engine to find the information you need.
+        
         # For example, to search for a person named 'John Doe' you can use the search engine and type 'site:linkedin.com "John Doe"' and then get the link to the person's profile.
-        # Also you know that the best way to get the information for a Linkedin profile is to use a prefix like 'archive.md/linkedin-link' (e.g. archive.md/http://linkedin.com/in/johndoe) to get the information from the profile.
+        # Also you know that the best way to get the information for a Linkedin profile is to use a prefix like 'https://archive.md/linkedin-link' (e.g. https://archive.md/http://linkedin.com/in/johndoe) to get the information from the profile.
         # The other option you have is to simulate being a mobile browser and use the Linkedin mobile website to get the information you need.
         
         # If you need to get information about a certain role instead of a person, you can use the search engine and type 'site:linkedin.com "role"' and then get the links to the people with that role.
@@ -92,4 +93,4 @@ const LinkedinExpert = forwardRef(({
     );
 });
 
-export default LinkedinExpert;
+export default PeopleFinder;
